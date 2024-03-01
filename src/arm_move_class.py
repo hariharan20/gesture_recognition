@@ -35,7 +35,7 @@ class arm_move:
 
     def goto_obj1(self):
         """
-        A Function for reaching to object 1 # change the name of the object here
+        A Function for reaching to object 1
         """
         self.arm.go(self.object1_move_1 , wait=True)
         rospy.sleep(5)
@@ -45,7 +45,7 @@ class arm_move:
 
     def goto_obj2(self):
         """
-        A Function for reaching to object 1 # change the name of the object here
+        A Function for reaching to object 2
         """
         self.arm.go(self.object2_move_1 , wait=True)
         rospy.sleep(5)
@@ -55,7 +55,7 @@ class arm_move:
 
     def goto_obj3(self):
         """
-        A Function for reaching to object 1 # change the name of the object here
+        A function that moves to object 3
         """
         self.arm.go(self.object3_move_1 , wait=True)
         rospy.sleep(5)
@@ -65,9 +65,12 @@ class arm_move:
 
     def speak(self, params):
         """
-        A function to speaking 
-        
+        Make the tiago speak 
+
+        Args:
+            params (str): a string saying what to say 
         """
+        params = params.replace(' ' , '_')
         self.goal.goal.rawtext.text = params # 'Please_take_the_bottle_from_my_hand'
         self.ac.send_goal(self.goal.goal  )
 
